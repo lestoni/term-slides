@@ -1,0 +1,21 @@
+{
+  "name": "term-slides",
+  "version": "1.0.0",
+  "description": "run markdown written slides in the terminal",
+  "bin": "bin/index.js",
+  "keywords": [
+    "slides",
+    "terminal",
+    "presentation"
+  ],
+  "author": "Tony Mutai <tonimut7@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "clear": "0.0.1",
+    "keypress": "~0.2.1",
+    "marked": "~0.3.5",
+    "marked-terminal": "~1.6.1",
+    "minimist": "~1.2.0",
+    "pad-stdio": "~2.0.0"
+  }
+}
