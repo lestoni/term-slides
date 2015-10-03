@@ -6,13 +6,13 @@ Separate sections using `---`. See example `slide.md`.
 
 ![Screenshot of term-slides](./screenshot.gif)
 
-# Install.
+## Install.
 
 ```
 $ npm install -g term-slides
 ```
 
-# Usage.
+## Usage.
 
 ```
 $ term-slides --slides=slide1.md slide2.md slide3.md
@@ -22,6 +22,6 @@ $ term-slides --slides=slide1.md slide2.md slide3.md
 Use key `q` or `CTRL+c` to quit presentation.
 
 
-# License.
+## License.
 
 MIT.
