@@ -1,21 +1,32 @@
 {
   "name": "term-slides",
   "version": "1.0.0",
-  "description": "run markdown written slides in the terminal",
-  "bin": "bin/index.js",
-  "keywords": [
-    "slides",
-    "terminal",
-    "presentation"
-  ],
-  "author": "Tony Mutai <tonimut7@gmail.com>",
-  "license": "MIT",
+  "description": "presentation in the terminal with markdown written slides",
+  "bin": {
+    "term-slides": "index.js"
+  },
   "dependencies": {
-    "clear": "0.0.1",
+    "clear": "~0.0.1",
     "keypress": "~0.2.1",
     "marked": "~0.3.5",
     "marked-terminal": "~1.6.1",
     "minimist": "~1.2.0",
     "pad-stdio": "~2.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lestoni/term-slides.git"
+  },
+  "keywords": [
+    "terminal",
+    "slides",
+    "presentation"
+  ],
+  "author": "Tony Mutai <tonimut7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lestoni/term-slides/issues"
+  },
+  "homepage": "https://github.com/lestoni/term-slides#readme"
 }
