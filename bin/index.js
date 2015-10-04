@@ -91,6 +91,7 @@ showSlide(currentSlide);
 
 function showSlide(which) {
   var content = buffer[which];
+  var rows = process.stdout.rows - 1;
 
   padStdio.stdout('              ');
 
@@ -98,5 +99,5 @@ function showSlide(which) {
     .reset()
     .position(1, yTop)
     .write(marked(content), xLeft)
-    .position(xLeft, process.stdout.rows - 1);
+    .position(xLeft, rows);
 }
