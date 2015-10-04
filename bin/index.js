@@ -10,6 +10,7 @@ var clear            = require('clear');
 var marked           = require('marked');
 var TerminalRenderer = require('marked-terminal');
 var padStdio         = require('pad-stdio');
+var charm            = require('charm')(process.stdout);
 
 if(!argv.slides) {
   console.log(' ');
@@ -31,14 +32,20 @@ var slides = [argv.slides].concat(argv._);
 var buffer = [];
 var currentSlide = 0;
 var totalSlides;
-var separator = /---/;
+var separator = /---/g;
+var xLeft = 5;
+var yTop = 2;
 
-slides.forEach(function(slide) {
-  var slideContent = fs.readFileSync(slide).toString().trim();
-  var sections = slideContent.split(separator);
+try{
+  slides.forEach(function(slide) {
+    var slideContent = fs.readFileSync(slide).toString().trim();
+    var sections = slideContent.split(separator);
 
-  buffer = buffer.concat(sections);
-});
+    buffer = buffer.concat(sections);
+  });
+} catch (ex) {
+  return console.error(ex.message);
+}
 
 totalSlides = buffer.length;
 
@@ -56,9 +63,9 @@ process.stdin.on('keypress', function (ch, key) {
 
       } else {
         clear();
-        currentSlide =  currentSlide + 1;
+        currentSlide += 1;
 
-        return showSlide(buffer[currentSlide]);
+        return showSlide(currentSlide);
 
       }
 
@@ -68,9 +75,9 @@ process.stdin.on('keypress', function (ch, key) {
 
       } else {
         clear();
-        currentSlide =  currentSlide - 1;
+        currentSlide -= 1;
 
-        return showSlide(buffer[currentSlide]);
+        return showSlide(currentSlide);
       }
 
     }
@@ -80,11 +87,16 @@ process.stdin.on('keypress', function (ch, key) {
 process.stdin.setRawMode(true);
 process.stdin.resume();
 
-showSlide(buffer[currentSlide]);
+showSlide(currentSlide);
 
-function showSlide(content) {
-  padStdio.stdout('          ');
-  process.stdout.write('\t\n');
-  padStdio.stdout('          ');
-  process.stdout.write(marked(content));
+function showSlide(which) {
+  var content = buffer[which];
+
+  padStdio.stdout('              ');
+
+  charm
+    .reset()
+    .position(1, yTop)
+    .write(marked(content), xLeft)
+    .position(xLeft, process.stdout.rows - 1);
 }
